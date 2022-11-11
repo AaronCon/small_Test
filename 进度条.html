@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 500px;
+      height: 30px;
+      border: black 2px solid;
+      position: relative;
+    }
+    #progress {
+      width: 0%;
+      height: 30px;
+      background: pink;
+      margin: 0;
+    }
+    #btn {
+      width: 50px;
+      height: 30px;
+    }
+    #n {
+      position: absolute;
+      top: 5px;
+      right: 0;
+    }
+
+    #box1 {
+      width: 500px;
+      height: 30px;
+      border: black 2px solid;
+      position: relative;
+    }
+    #progress1 {
+      width: 0%;
+      height: 30px;
+      background: pink;
+      margin: 0;
+    }
+    #btn1 {
+      width: 50px;
+      height: 30px;
+    }
+    #n1 {
+      position: absolute;
+      top: 5px;
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <p id="progress"></p>
+    <span id="n">0%</span>
+    
+  </div>
+  <button id="btn">开始</button>
+  
+  <div id="box1">
+    <p id="progress1"></p>
+    <span id="n1">0%</span>
+    
+  </div>
+  <button id="btn1">开始</button>
+
+  <script>
+    var progress = document.getElementById('progress')
+    var n = document.getElementById('n')
+    var btn = document.getElementById('btn')
+
+    var progress1 = document.getElementById('progress1')
+    var n1 = document.getElementById('n1')
+    var btn1 = document.getElementById('btn1')
+
+    function btnClick(button, pro, num) {
+      button.onclick = () => {
+        var l = parseInt(num.innerHTML.substring(0, num.innerHTML.length - 1));
+        if(l === 100) return ;
+        var t = setInterval(() => {
+          l += 1
+          if(l >= 100) {
+            l = 100
+            clearInterval(t)
+          }
+          pro.style.width = l + '%'
+          num.innerHTML = l + '%'
+        }, 10)
+      }
+    }
+
+    btnClick(btn, progress, n)
+    btnClick(btn1, progress1, n1)
+  </script>
+</body>
+</html>
